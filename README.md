@@ -6,6 +6,7 @@
 # usage
 
 - make sure root env is setup (https://root.cern.ch)
+- requires sources of https://github.com/alisw/AliPhysics (only at the begining; or after --cleanup)
 
 ```
 ./build.sh --build --aliphysics=<path to>/AliPhysics
