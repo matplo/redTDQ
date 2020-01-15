@@ -86,5 +86,6 @@ if [ "x${build}" == "xyes" ]; then
 	exit 0
 fi
 
-note "options are: --build --clean --cleanup [--aliphysics=<dir>]"
-note "by default we are looking for aliphysics in <this script dir>/.. "
+note "options are: --build --clean --cleanup [--aliphysics=<dir>] [--aliroot=<dir>]"
+note "by default we are looking for AliPhysics in <this script dir>/.. "
+note "by default we are looking for AliRoot in <this script dir>/.. "
