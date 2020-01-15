@@ -69,8 +69,8 @@ if [ "x${build}" == "xyes" ]; then
 			aliroot_deps=$(cat ${THISD}/aliroot_deps.txt)
 			for fn in ${aliroot_deps}
 			do
-				[ ! -e "${THISD}/ANALYSISalice/${fn}.h" ] 	&& rsync ${aliroot_source_dir}/${fn}.h 		${THISD}/ANALYSISalice
-				[ ! -e "${THISD}/ANALYSISalice/${fn}.cxx" ] && rsync ${aliroot_source_dir}/${fn}.cxx 	${THISD}/ANALYSISalice
+				[ ! -e "${THISD}/miniAliROOT/${fn}.h" ] 	&& rsync ${aliroot_source_dir}/${fn}.h 	${THISD}/miniAliROOT
+				[ ! -e "${THISD}/miniAliROOT/${fn}.cxx" ] && rsync ${aliroot_source_dir}/${fn}.cxx 	${THISD}/miniAliROOT
 			done
 		fi
 	fi

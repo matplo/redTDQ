@@ -26,8 +26,11 @@ file(GLOB SOURCES_LIB ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cxx)
 #list(REMOVE_ITEM SOURCES_LIB "${to_remove}")
 
 list(REMOVE_ITEM SOURCES_LIB 
-	${CMAKE_CURRENT_SOURCE_DIR}/src/AliAnalysisTaskReducedTreeMaker.cxx
-	${CMAKE_CURRENT_SOURCE_DIR}/src/AliReducedEventInputHandler.cxx)
+	${CMAKE_CURRENT_SOURCE_DIR}/src/AliAnalysisTaskReducedTreeMaker.cxx)
+
+# list(REMOVE_ITEM SOURCES_LIB 
+# 	${CMAKE_CURRENT_SOURCE_DIR}/src/AliAnalysisTaskReducedTreeMaker.cxx
+# 	${CMAKE_CURRENT_SOURCE_DIR}/src/AliReducedEventInputHandler.cxx)
 
 # list(REMOVE_ITEM SOURCES_LIB 
 # 	${CMAKE_CURRENT_SOURCE_DIR}/src/AliAnalysisTaskReducedEventProcessor.cxx
@@ -41,7 +44,7 @@ set(LINKDEFFILE ${CMAKE_CURRENT_SOURCE_DIR}/src/PWGDQreducedTreeLinkDef.h)
 list(REMOVE_ITEM ${HEADERS_LIB} ${CMAKE_CURRENT_SOURCE_DIR}/src/${LINKDEFFILE})
 
 # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/kf ${CMAKE_CURRENT_SOURCE_DIR}/ANALYSISalice)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/ANALYSISalice)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/miniAliROOT)
 ROOT_GENERATE_DICTIONARY(G__DQReducedTrees ${HEADERS_LIB} LINKDEF ${LINKDEFFILE})
 
 #---Create a shared library with geneated dictionary
