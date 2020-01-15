@@ -36,8 +36,9 @@ if [ "x${clean}" == "xyes" ]; then
 fi
 
 build=$(get_opt "build" $@)
+source=$(get_opt "source" $@)
 if [ "x${build}" == "xyes" ]; then
-	if [ ! -d ${src_dir} ]; then
+	if [ ! -d ${src_dir} ] || [ "x${source}" == "xyes" ]; then
 		note "Setup sources..."
 		aliphysics_dir=$(get_opt "aliphysics" $@)
 		red_tree_sources_dir="<none>"
@@ -53,15 +54,34 @@ if [ "x${build}" == "xyes" ]; then
 			note "Copying/rsync files..."
 			rsync -avh --progress ${red_tree_sources_dir} ${src_dir}
 		fi
+		aliroot_dir=$(get_opt "aliroot" $@)
+		aliroot_source_dir="<none>"
+		if [ -z ${aliroot_dir} ]; then
+			aliroot_source_dir=${THISD}/../AliRoot/
+		else
+			aliroot_source_dir=${aliroot_dir}
+		fi
+		if [ ! -d ${aliroot_source_dir} ]; then
+			error "AliRoot sources dir ${aliroot_source_dir} does not exist."
+			exit 1
+		else
+			note "Copying/rsync files..."
+			aliroot_deps=$(cat ${THISD}/aliroot_deps.txt)
+			for fn in ${aliroot_deps}
+			do
+				[ ! -e "${THISD}/ANALYSISalice/${fn}.h" ] 	&& rsync ${aliroot_source_dir}/${fn}.h 		${THISD}/ANALYSISalice
+				[ ! -e "${THISD}/ANALYSISalice/${fn}.cxx" ] && rsync ${aliroot_source_dir}/${fn}.cxx 	${THISD}/ANALYSISalice
+			done
+		fi
 	fi
 
 	if [ ! -d ${src_dir} ]; then
 		error "sources missing..."
 	else
 		note "Building..."
-		mkdir ${build_dir}
+		[ ! -d ${build_dir} ] && mkdir ${build_dir}
 		cd ${build_dir}
-		cmake .. && make
+		cmake .. && make -j 
 	fi
 	exit 0
 fi
