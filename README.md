@@ -9,7 +9,7 @@
 - requires sources of https://github.com/alisw/AliPhysics (only at the begining; or after --cleanup)
 
 ```
-./build.sh --build --aliphysics=<path to>/AliPhysics
+./build.sh --build --aliphysics=<path to>/AliPhysics --aliroot=<path to>/AliRoot
 ```
 
 - for more options (cleanup)
