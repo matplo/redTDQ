@@ -6,10 +6,10 @@
 # usage
 
 - make sure root env is setup (https://root.cern.ch)
-- requires sources of https://github.com/alisw/AliPhysics (only at the begining; or after --cleanup)
+- requires sources of https://github.com/alisw/AliPhysics and https://github.com/alisw/AliRoot (only at the begining; or after --cleanup)
 
 ```
-./build.sh --build --aliphysics=<path to>/AliPhysics --aliroot=<path to>/AliRoot
+./build.sh --build --sources --aliphysics=<path to>/AliPhysics --aliroot=<path to>/AliRoot
 ```
 
 - for more options (cleanup)
